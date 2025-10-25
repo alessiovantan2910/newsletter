@@ -20,7 +20,7 @@ export async function POST(req: Request) {
         //Supabaseに保存
 
         const {error} = await supabaseAdmin
-        .from("subscibers")
+        .from("subscribers")
         .insert([{ email }]);
 
         if (error){
