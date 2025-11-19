@@ -56,9 +56,6 @@ className="flex-1 border rounded px-3 py-2 required:border-pink-500"
     {msg}
   </p>
 )}
-<div className="mt-6 text-sm">
-<Link href="/subscribers" className="text-purple-600 underline">登録者一覧</Link>
-</div>
 </div>
 </main>
   );
