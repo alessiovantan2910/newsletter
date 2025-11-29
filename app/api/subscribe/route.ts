@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { transporter } from "@/lib/mailer";
+import { getEmailTemplate } from "@/lib/getTemplate";
 
 function isValidEmail(s: string){
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
@@ -32,12 +33,13 @@ export async function POST(req: Request) {
         }
 
         //nodemailer
-
+        const html = getEmailTemplate("welcome.html", {email})
+        
         await transporter.sendMail({
             from: process.env.SMTP_FROM,
             to: email,
             subject: "メールマガジンへようこそ",
-            html:`<p> こんにちは！${email}, 登録ありがとうございます。</p>`
+            html,
         })
         return  NextResponse.json({message : "登録完了しました。確認メールを送りました。"}, {status: 200});
 

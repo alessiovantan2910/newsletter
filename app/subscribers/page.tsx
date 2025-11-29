@@ -36,7 +36,15 @@ if (!user.email || user.email !== process.env.ADMIN_EMAIL){
 
     return(
         <main className="p-8">
+          <a href="auth/logout"  className="absolute inset-y-0 right-0 mr-4 mt-4 text-purple-600 underline">ログアウト</a>
             <h1 className="text-xl font-bold mb-4">登録者一覧</h1>
+
+            <a 
+            href="/api/subscribers/export"
+            className="text-sm px-3 py-1 border rounded bg-purple-500 text-white hover:bg-purple-700"
+            >
+                ダウンロード
+            </a>
             <ul className="space-y-2">
                 {data?.map((s) => (
                 <li className="border p-3 rounded" key={s.id}>
